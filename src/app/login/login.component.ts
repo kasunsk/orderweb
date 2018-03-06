@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   model: any = {};
   loading = false;
   returnUrl: string;
-  returnTenantUrl : string;
+  returnTenantUrl: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,9 +36,9 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
 
-          let currentUser = localStorage.getItem('currentUser');
+          const currentUser = localStorage.getItem('currentUser');
 
-          this.alertService.success("Login Success", true);
+          this.alertService.success('Login Success', true);
 
           if (currentUser) {
             this.router.navigate([this.returnUrl]);
