@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService, AuthenticationService } from '../_services/index';
 
 @Component({
-  moduleId: module.id,
+  selector: 'login-root',
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.scss']
 })
@@ -22,11 +22,12 @@ export class LoginComponent implements OnInit {
     private alertService: AlertService) { }
 
   ngOnInit() {
+    console.log('test');
     // reset login status
-    this.authenticationService.logout();
+    // this.authenticationService.logout();
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
   }
 
   login() {

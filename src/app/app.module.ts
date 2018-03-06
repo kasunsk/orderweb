@@ -23,6 +23,6 @@ import {FormsModule} from "@angular/forms";
     routing
   ],
   providers: [AlertService,AuthGuard, AuthenticationService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, LoginComponent]
 })
 export class AppModule { }
