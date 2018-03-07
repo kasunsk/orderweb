@@ -9,12 +9,18 @@ import {AlertService} from "./_services/alert.service";
 import {AuthGuard} from './_guards/index';
 import {routing} from './app.routing';
 import {FormsModule} from "@angular/forms";
+// import { OrderComponent } from './order/order.component';
+import {OrderService} from "./_services/order.service";
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {OrderComponent} from "./order/order.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    // HttpClientModule,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +28,7 @@ import {FormsModule} from "@angular/forms";
     HttpModule,
     routing
   ],
-  providers: [AlertService,AuthGuard, AuthenticationService],
+  providers: [AlertService,AuthGuard, AuthenticationService, OrderService],
   bootstrap: [AppComponent, LoginComponent]
 })
 export class AppModule { }
