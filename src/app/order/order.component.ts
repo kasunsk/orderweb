@@ -6,7 +6,7 @@ import {AlertService} from "../_services/alert.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-order',
+  selector: 'order-root',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.scss']
 })
@@ -23,6 +23,7 @@ export class OrderComponent implements OnInit {
     {}
 
   ngOnInit() {
+    this.getOrders();
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
@@ -33,6 +34,7 @@ export class OrderComponent implements OnInit {
         data => {
           this.alertService.success('Order successfully retrieved', true);
           console.log(data);
+          this.orders = data;
         },
         error => {
           this.alertService.error(error);
