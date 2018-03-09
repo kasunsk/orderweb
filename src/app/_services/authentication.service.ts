@@ -6,6 +6,9 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class AuthenticationService {
 
+  isLoggedIn: boolean = false;
+  public redirectUrl: string;
+
   headers = new Headers({"Content-Type": "application/json"});
   options = new RequestOptions({headers: this.headers});
 
@@ -25,13 +28,9 @@ export class AuthenticationService {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(loginResponse.user));
         }
-
-        if (loginResponse && loginResponse.tenant && loginResponse.token) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentTenant', JSON.stringify(loginResponse.tenant));
-        }
-
-        localStorage.setItem('userToken', JSON.stringify(loginResponse.token));
+        localStorage.setItem('userToken', loginResponse.token);
+        this.isLoggedIn =true;
+        this.redirectUrl='/order';
       });
   }
 
@@ -40,7 +39,6 @@ export class AuthenticationService {
 
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
-    localStorage.removeItem('currentTenant');
 
     let user_token = localStorage.getItem('userToken');
 
