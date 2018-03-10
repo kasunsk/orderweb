@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Headers, Http, RequestOptions, Response} from '@angular/http';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -9,7 +9,7 @@ export class AuthenticationService {
   isLoggedIn: boolean = false;
   public redirectUrl: string;
 
-  headers = new Headers({"Content-Type": "application/json"});
+  headers = new Headers({'Content-Type': 'application/json'});
   options = new RequestOptions({headers: this.headers});
 
   constructor(private http: Http) {
@@ -18,8 +18,8 @@ export class AuthenticationService {
   login(username: string, password: string) {
 
     return this.http.post(environment.api_url + '/auth/login', JSON.stringify({
-      "username": username,
-      "password": password
+      'username': username,
+      'password': password
     }), this.options)
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
@@ -29,8 +29,8 @@ export class AuthenticationService {
           localStorage.setItem('currentUser', JSON.stringify(loginResponse.user));
         }
         localStorage.setItem('userToken', loginResponse.token);
-        this.isLoggedIn =true;
-        this.redirectUrl='/order';
+        this.isLoggedIn = true;
+        this.redirectUrl = '/order';
       });
   }
 
@@ -51,7 +51,7 @@ export class AuthenticationService {
   private jwt() {
     // create authorization header with jwt token
     let userToken = JSON.parse(localStorage.getItem('userToken'));
-    let headers = new Headers({'user_token': userToken, "Content-Type": "application/json"});
+    let headers = new Headers({'user_token': userToken, 'Content-Type': 'application/json'});
     return new RequestOptions({headers: headers});
   }
 }

@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Headers, Http, RequestOptions, Response} from '@angular/http';
-import 'rxjs/add/operator/map'
-import {environment} from '../../environments/environment';
-import {Product} from "../_models/product";
+import { Injectable } from '@angular/core';
+import { Headers, Http, RequestOptions, Response } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
+import { Product } from '../_models/product';
 
 @Injectable()
 export class ProductService {
@@ -11,14 +11,14 @@ export class ProductService {
   }
 
   getAll() {
-    let headers = new Headers({"Content-Type": "application/json"});
-    headers.set("token", localStorage.getItem("userToken"));
+    let headers = new Headers({'Content-Type': 'application/json'});
+    headers.set('token', localStorage.getItem('userToken'));
     let options = new RequestOptions({headers: headers});
 
     return this.http.get(environment.api_url + '/sellitem/list', options)
       .map((response: Response) => {
-        var res = response.json();
-        var result = <Product[]>response.json();
+        // var res = response.json();
+        const result = <Product[]>response.json();
         return result;
       });
   }

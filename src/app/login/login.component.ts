@@ -4,14 +4,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService, AuthenticationService } from '../_services/index';
 
 @Component({
-  selector: 'login-root',
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.scss']
 })
 
 export class LoginComponent implements OnInit {
   model: any = {};
-  loading = false;
+  loading: boolean;
   returnUrl: string;
 
   constructor(
@@ -21,6 +20,7 @@ export class LoginComponent implements OnInit {
     private alertService: AlertService) { }
 
   ngOnInit() {
+    this.loading = false;
     this.returnUrl = '/order';
   }
 

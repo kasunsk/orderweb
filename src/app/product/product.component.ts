@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Product} from "../_models/product";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AlertService} from "../_services/alert.service";
-import {ProductService} from "../_services/product.service";
+import { Component, OnInit } from '@angular/core';
+import { Product } from '../_models/product';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlertService } from '../_services/alert.service';
+import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-product',
@@ -11,9 +11,9 @@ import {ProductService} from "../_services/product.service";
 })
 export class ProductComponent implements OnInit {
 
-  loading:false;
-  products: Product[] = [];
-  failUrl:string;
+  loading: boolean;
+  products: Product[];
+  failUrl: string;
 
   constructor(private route: ActivatedRoute,
               private router: Router, private alertService: AlertService,
@@ -21,13 +21,14 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = false;
+    this.products = [];
     this.failUrl = '/';
     this.loadProducts();
   }
 
   loadProducts() {
-
-    this.productService.getAll()  .subscribe(
+    this.productService.getAll().subscribe(
       data => {
         this.alertService.success('Order successfully retrieved', true);
         console.log(data);
@@ -40,7 +41,6 @@ export class ProductComponent implements OnInit {
         this.loading = false;
       });
   }
-
 
 
 }
