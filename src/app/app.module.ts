@@ -9,11 +9,10 @@ import {AlertService} from "./_services/alert.service";
 import {AuthGuard} from './_guards/index';
 import {routing} from './app.routing';
 import {FormsModule} from "@angular/forms";
-// import { OrderComponent } from './order/order.component';
 import {OrderService} from "./_services/order.service";
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {OrderComponent} from "./order/order.component";
 import { ProductComponent } from './product/product.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -22,7 +21,8 @@ import { ProductComponent } from './product/product.component';
     LoginComponent,
     // HttpClientModule,
     OrderComponent,
-    ProductComponent
+    ProductComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

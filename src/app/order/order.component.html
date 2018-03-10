@@ -1,13 +1,14 @@
 <div>
+  <router-outlet></router-outlet>
   <nav>
     <a routerLink="/order" routerLinkActive="active">Orders</a>
     <a routerLink="/product" routerLinkActive="active">Products</a>
   </nav>
-  <router-outlet></router-outlet>
-  `
   <h3>Orders</h3>
   <table>
     <tbody>
+    <tr><td>Reference</td><td>Item</td>
+      <td>Status</td></tr>
     <tr><td>{{ orders[0].orderReference}}</td><td>{{ orders[0].orderItem}}</td>
     <td>{{ orders[0].orderStatus}}</td></tr>
     </tbody>
