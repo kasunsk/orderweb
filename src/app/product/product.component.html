@@ -2,8 +2,11 @@
   <h3>Products</h3>
   <table>
     <tbody>
-    <tr><td>{{ products[0].id}}</td><td>{{ products[0].itemReference}}</td>
-      <td>{{ products[0].sellingItem}}</td></tr>
+    <tr><td>Product Reference</td><td>Product</td>
+      <td>Available Amount</td><td>Status</td></tr>
+    <tr><td>{{ products[0].itemReference}}</td>
+      <td>{{ products[0].sellingItem}}</td><td>{{ products[0].availableAmount}}</td>
+    <td>{{ products[0].status}}</td></tr>
     </tbody>
   </table>
 </div>

@@ -13,6 +13,7 @@ import {OrderService} from "./_services/order.service";
 import {OrderComponent} from "./order/order.component";
 import { ProductComponent } from './product/product.component';
 import { HeaderComponent } from './header/header.component';
+import {ProductService} from "./_services/product.service";
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import { HeaderComponent } from './header/header.component';
     HttpModule,
     routing
   ],
-  providers: [AlertService,AuthGuard, AuthenticationService, OrderService],
-  bootstrap: [AppComponent, LoginComponent]
+  providers: [AlertService,AuthGuard, AuthenticationService, OrderService, ProductService],
+  bootstrap: [AppComponent, LoginComponent, OrderComponent, ProductComponent]
 })
 export class AppModule { }
