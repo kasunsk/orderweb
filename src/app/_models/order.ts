@@ -9,5 +9,6 @@ export class Order {
   currency:string;
   paymentType:string;
   paymentStatus:string;
- orderStatus:string;
+  orderStatus:string;
+  createdDate:string;
 }

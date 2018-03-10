@@ -14,6 +14,8 @@ import {OrderComponent} from "./order/order.component";
 import { ProductComponent } from './product/product.component';
 import { HeaderComponent } from './header/header.component';
 import {ProductService} from "./_services/product.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatTableModule} from "@angular/material";
 
 
 @NgModule({
@@ -28,10 +30,12 @@ import {ProductService} from "./_services/product.service";
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
     HttpModule,
-    routing
+    routing,
+    MatTableModule
   ],
   providers: [AlertService,AuthGuard, AuthenticationService, OrderService, ProductService],
-  bootstrap: [AppComponent, LoginComponent, OrderComponent, ProductComponent]
+  bootstrap: [AppComponent, LoginComponent, OrderComponent, ProductComponent, ProductComponent]
 })
 export class AppModule { }
