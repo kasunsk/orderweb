@@ -1,12 +1,21 @@
 <div>
   <h3>Products</h3>
   <table>
+    <thead>
+    <tr>
+      <th>Product Reference</th>
+      <th>Product</th>
+      <th>price</th>
+      <th>Product status</th>
+    </tr>
+    </thead>
     <tbody>
-    <tr><td>Product Reference</td><td>Product</td>
-      <td>Available Amount</td><td>Status</td></tr>
-    <tr><td>{{ products[0].itemReference}}</td>
-      <td>{{ products[0].sellingItem}}</td><td>{{ products[0].availableAmount}}</td>
-    <td>{{ products[0].status}}</td></tr>
+    <tr *ngFor="let product of products">
+      <td>{{product.itemReference}}</td>
+      <td>{{product.sellingItem}}</td>
+      <td>{{product.currency}} {{product.price}}</td>
+      <td>{{product.status}}</td>
+    </tr>
     </tbody>
   </table>
 </div>

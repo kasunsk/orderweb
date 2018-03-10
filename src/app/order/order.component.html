@@ -6,11 +6,28 @@
   <router-outlet></router-outlet>
   <h3>Orders</h3>
   <table>
-    <tbody>
-    <tr><td>Reference</td><td>Item</td>
-      <td>Status</td></tr>
-    <tr><td>{{ orders[0].orderReference}}</td><td>{{ orders[0].orderItem}}</td>
-    <td>{{ orders[0].orderStatus}}</td></tr>
-    </tbody>
+  <thead>
+  <tr> <th>Order Reference</th>
+    <th>Item</th>
+    <th>Status</th>
+    <th>Amount</th>
+    <th>Price</th>
+    <th>Payment Type</th>
+    <th>Payment Status</th>
+    <th>Created Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of orders">
+    <td>{{order.orderReference}}</td>
+    <td>{{order.orderItem}}</td>
+    <td>{{order.orderStatus}}</td>
+    <td>{{order.amount}}</td>
+    <td>{{order.currency}} {{order.price}}</td>
+    <td>{{order.paymentType}}</td>
+    <td>{{order.paymentStatus}}</td>
+    <td>{{order.createdDate}}</td>
+  </tr>
+  </tbody>
   </table>
 </div>
