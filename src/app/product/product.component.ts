@@ -13,6 +13,7 @@ export class ProductComponent implements OnInit {
 
   loading:false;
   products: Product[] = [];
+  failUrl:string;
 
   constructor(private route: ActivatedRoute,
               private router: Router, private alertService: AlertService,
@@ -20,6 +21,7 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.failUrl = '/';
     this.loadProducts();
   }
 
@@ -34,6 +36,7 @@ export class ProductComponent implements OnInit {
       },
       error => {
         this.alertService.error(error);
+        this.router.navigate([this.failUrl]);
         this.loading = false;
       });
   }
