@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {OrderService} from "../_services/order.service";
 import {User} from "../_models/user";
 import {Order} from "../_models/order";
@@ -35,6 +35,7 @@ export class OrderComponent implements OnInit {
           this.alertService.success('Order successfully retrieved', true);
           console.log(data);
           this.orders = data;
+          this.loading = false;
         },
         error => {
           this.alertService.error(error);

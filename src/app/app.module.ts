@@ -13,6 +13,7 @@ import {FormsModule} from "@angular/forms";
 import {OrderService} from "./_services/order.service";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {OrderComponent} from "./order/order.component";
+import { ProductComponent } from './product/product.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {OrderComponent} from "./order/order.component";
     AppComponent,
     LoginComponent,
     // HttpClientModule,
-    OrderComponent
+    OrderComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
