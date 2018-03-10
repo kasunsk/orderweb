@@ -21,9 +21,7 @@ export class LoginComponent implements OnInit {
     private alertService: AlertService) { }
 
   ngOnInit() {
-    console.log('test');
     this.returnUrl = '/order';
-    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/order';
   }
 
   login() {
