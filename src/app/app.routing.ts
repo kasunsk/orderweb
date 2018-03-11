@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 import { LoginComponent } from './login/index';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
+import {HistoryComponent} from "./history/history.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
+  {path: 'history', component: HistoryComponent},
 
   // otherwise redirect to home
   {path: '**', redirectTo: ''}

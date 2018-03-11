@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { HttpClientModule } from '@angular/common/http';
+import { HistoryComponent } from './history/history.component';
+import {HistoryService} from "./_services/history.service";
 // import {MatTableModule} from '@angular/material';
 
 
@@ -28,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     OrderComponent,
     ProductComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
     // MatTableModule
   ],
-  providers: [AlertService, AuthGuard, AuthenticationService, OrderService, ProductService],
+  providers: [AlertService, AuthGuard, AuthenticationService, OrderService, ProductService, HistoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
