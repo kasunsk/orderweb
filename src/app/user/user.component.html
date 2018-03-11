@@ -1,0 +1,29 @@
+<div>
+  <h3>Application Users</h3>
+  <table border="1">
+    <thead>
+    <tr>
+      <th>User Id</th>
+      <th>Name</th>
+      <th>Username</th>
+      <th>User Role</th>
+      <th>Email</th>
+      <th>Mobile</th>
+      <th>Created Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.userRole}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.mobile}}</td>
+      <td>{{user.createdDate}}</td>
+      <td><button type="button" class="btn btn-primary">Remove</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
