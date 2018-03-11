@@ -15,7 +15,7 @@ export class HistoryService {
     headers.set("token", localStorage.getItem("userToken"));
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.api_url + '/history/' + orderId, options)
+    return this.http.get(environment.api_url + '/order/history/' + orderId, options)
       .map((response: Response) => {
         var res = response.json();
         var result = <History[]>response.json();

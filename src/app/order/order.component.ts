@@ -28,7 +28,7 @@ export class OrderComponent implements OnInit {
     this.loading = false;
     this.orders = [];
     this.getOrders();
-    this.historyUrl = 'history';
+    this.historyUrl = 'order/history/';
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
@@ -49,7 +49,7 @@ export class OrderComponent implements OnInit {
   }
 
   getOrderHistory(orderId) {
-    this.router.navigate([this.historyUrl], orderId);
+    this.router.navigate([this.historyUrl + orderId]);
   }
 
 }
