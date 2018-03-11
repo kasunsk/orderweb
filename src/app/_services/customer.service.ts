@@ -2,23 +2,22 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
-import {User} from "../_models/user";
+import {Customer} from "../_models/customer";
 
 @Injectable()
-export class UserService {
+export class CustomerService {
 
   constructor(private http: Http) {
   }
 
-  getAll() {
+  getCustomerData(customerId) {
     let headers = new Headers({'Content-Type': 'application/json'});
     headers.set('token', localStorage.getItem('userToken'));
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.api_url + '/user', options)
+    return this.http.get(environment.api_url + '/order/customer/' + customerId, options)
       .map((response: Response) => {
-        // var res = response.json();
-        const result = <User[]>response.json();
+        const result = <Customer>response.json();
         return result;
       });
   }

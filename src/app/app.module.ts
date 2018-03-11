@@ -22,6 +22,8 @@ import { HistoryComponent } from './history/history.component';
 import {HistoryService} from "./_services/history.service";
 import { UserComponent } from './user/user.component';
 import {UserService} from "./_services/user.service";
+import { CustomerComponent } from './customer/customer.component';
+import {CustomerService} from "./_services/customer.service";
 // import {MatTableModule} from '@angular/material';
 
 
@@ -34,7 +36,8 @@ import {UserService} from "./_services/user.service";
     HeaderComponent,
     HomeComponent,
     HistoryComponent,
-    UserComponent
+    UserComponent,
+    CustomerComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,7 @@ import {UserService} from "./_services/user.service";
     // MatTableModule
   ],
   providers: [AlertService, AuthGuard, AuthenticationService, OrderService, ProductService, HistoryService,
-  UserService],
+  UserService, CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

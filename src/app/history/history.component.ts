@@ -17,7 +17,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   private sub: any;
 
 
-  constructor(private historyService:HistoryService, private alertService:AlertService, private route: ActivatedRoute,) { }
+  constructor(private historyService:HistoryService, private alertService:AlertService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
