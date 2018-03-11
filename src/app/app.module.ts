@@ -20,6 +20,8 @@ import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { HttpClientModule } from '@angular/common/http';
 import { HistoryComponent } from './history/history.component';
 import {HistoryService} from "./_services/history.service";
+import { UserComponent } from './user/user.component';
+import {UserService} from "./_services/user.service";
 // import {MatTableModule} from '@angular/material';
 
 
@@ -31,7 +33,8 @@ import {HistoryService} from "./_services/history.service";
     ProductComponent,
     HeaderComponent,
     HomeComponent,
-    HistoryComponent
+    HistoryComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import {HistoryService} from "./_services/history.service";
     HttpClientModule
     // MatTableModule
   ],
-  providers: [AlertService, AuthGuard, AuthenticationService, OrderService, ProductService, HistoryService],
+  providers: [AlertService, AuthGuard, AuthenticationService, OrderService, ProductService, HistoryService,
+  UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
