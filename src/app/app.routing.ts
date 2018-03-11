@@ -4,10 +4,16 @@ import { NgModule } from '@angular/core';
 import { LoginComponent } from './login/index';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
+import {HistoryComponent} from "./history/history.component";
+import {UserComponent} from "./user/user.component";
+import {CustomerComponent} from "./customer/customer.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
+  {path: 'order/history/:orderId', component: HistoryComponent},
+  {path: 'user', component: UserComponent},
+  {path:'order/customer/:customerId', component: CustomerComponent},
 
   // otherwise redirect to home
   {path: '**', redirectTo: ''}

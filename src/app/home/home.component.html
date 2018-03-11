@@ -9,6 +9,9 @@
         <li class="nav-item">
           <a class="nav-link" [class.active]="activeTab === 'product'" (click)="activeTab = 'product'">Product</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="activeTab === 'user'" (click)="activeTab = 'user'">User</a>
+        </li>
       </ul>
 
       <div class="card">
@@ -17,6 +20,7 @@
             <div class="tab-pane active">
               <app-order *ngIf="activeTab === 'order'"></app-order>
               <app-product *ngIf="activeTab === 'product'"></app-product>
+              <app-user *ngIf="activeTab === 'user'"></app-user>
             </div>
           </div>
         </div>
