@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
           this.alertService.success('Login Success', true);
           if (currentUser) {
             this.router.navigate([this.returnUrl]);
+            this.authenticationService.showNavigationSubject.next(true);
           }
           this.loading = false;
         },

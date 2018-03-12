@@ -2,12 +2,15 @@ import {Injectable} from '@angular/core';
 import {Headers, Http, RequestOptions, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class AuthenticationService {
 
   isLoggedIn: boolean = false;
-  public redirectUrl: string;
+  redirectUrl: string;
+  showNavigation: boolean;
+  showNavigationSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.showNavigation);
 
   headers = new Headers({'Content-Type': 'application/json'});
   options = new RequestOptions({headers: this.headers});
