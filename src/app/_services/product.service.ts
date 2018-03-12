@@ -15,7 +15,7 @@ export class ProductService {
     headers.set('token', localStorage.getItem('userToken'));
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.api_url + '/sellitem/list', options)
+    return this.http.get(environment.api_url + '/product/list', options)
       .map((response: Response) => {
         // var res = response.json();
         const result = <Product[]>response.json();
