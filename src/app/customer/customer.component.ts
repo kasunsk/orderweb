@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CustomerService} from "../_services/customer.service";
 import {Customer} from "../_models/customer";
 import {AlertService} from "../_services/alert.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-customer',
@@ -15,9 +15,10 @@ export class CustomerComponent implements OnInit {
   customer : Customer;
   customerId : number;
   private sub: any;
+  backUrl : string;
 
   constructor(private alertService: AlertService, private customerService: CustomerService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute, private router : Router) {
   }
 
   ngOnInit() {
@@ -26,6 +27,7 @@ export class CustomerComponent implements OnInit {
 
       // In a real app: dispatch action to load the details here.
     });
+    this.backUrl = '';
     this.loading = false;
     this.loadCustomer(this.customerId);
   }
@@ -42,6 +44,11 @@ export class CustomerComponent implements OnInit {
           this.alertService.error(error);
           this.loading=false;
         })
+  }
+
+  backFromCustomerView() {
+    this.router.navigate([this.backUrl]);
+
   }
 
 }

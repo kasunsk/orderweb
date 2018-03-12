@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {History} from "../_models/history";
 import {HistoryService} from "../_services/history.service";
 import {AlertService} from "../_services/alert.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-history',
@@ -15,9 +15,12 @@ export class HistoryComponent implements OnInit, OnDestroy {
   histories: History[] = [];
   orderId : number;
   private sub: any;
+  backUrl : string;
 
 
-  constructor(private historyService:HistoryService, private alertService:AlertService, private route: ActivatedRoute) { }
+  constructor(private historyService: HistoryService, private alertService: AlertService,
+              private route: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -25,11 +28,12 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
       // In a real app: dispatch action to load the details here.
     });
-    this.loading = false;
+    this.backUrl = '';
     this.getOrderHistory(this.orderId);
   }
 
   getOrderHistory(orderId) {
+    this.loading = true;
     this.historyService.getOrderHistory(orderId)
       .subscribe(data => {
           this.histories = data;
@@ -41,6 +45,10 @@ export class HistoryComponent implements OnInit, OnDestroy {
           this.alertService.error(error);
           this.loading=false;
         })
+  }
+
+  backFromHistory() {
+    this.router.navigate([this.backUrl]);
   }
 
   ngOnDestroy() {
