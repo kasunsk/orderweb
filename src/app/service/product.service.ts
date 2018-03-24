@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
-import {User} from '../_models/user';
+import { Product } from '../models/product';
 
 @Injectable()
-export class UserService {
+export class ProductService {
 
   constructor(private http: Http) {
   }
@@ -15,10 +15,10 @@ export class UserService {
     headers.set('token', localStorage.getItem('userToken'));
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.api_url + '/user', options)
+    return this.http.get(environment.api_url + '/sellitem/list', options)
       .map((response: Response) => {
         // var res = response.json();
-        const result = <User[]>response.json();
+        const result = <Product[]>response.json();
         return result;
       });
   }

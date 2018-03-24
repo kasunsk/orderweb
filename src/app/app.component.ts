@@ -9,7 +9,6 @@ import { Keepalive } from '@ng-idle/keepalive';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'product.lk';
 
   constructor(private idle: Idle, private keepalive: Keepalive, private router: Router) {
     // sets an idle timeout of 5 seconds.

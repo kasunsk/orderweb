@@ -8,7 +8,7 @@ import { ProductComponent } from './product/product.component';
 import { UserComponent } from './user/user.component';
 import { CustomerComponent } from './customer/customer.component';
 import { HistoryComponent } from './history/history.component';
-import { AuthGuard } from './_guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { AlertService, AuthenticationService } from '../_services/index';
+import { AlertService, AuthenticationService } from '../service/index';
 
 @Component({
   templateUrl: 'login.component.html',
@@ -28,15 +28,16 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.authenticationService.login(this.model.username, this.model.password)
       .subscribe(
-        data => {
+        response => {
+          // store logged in user after a successful login
+          localStorage.setItem('currentUser', (response as any).body.user);
+          localStorage.setItem('access-token', (response as any).body.token);
 
-          const currentUser = localStorage.getItem('currentUser');
-          this.alertService.success('Login Success', true);
-          if (currentUser) {
-            this.router.navigate([this.returnUrl]);
-            this.authenticationService.showNavigationSubject.next(true);
-          }
+          this.authenticationService.showNavigationSubject.next(true);
+
           this.loading = false;
+          this.router.navigate([this.returnUrl]);
+          this.alertService.success('Login Success', true);
         },
         error => {
           this.alertService.error(error);

@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {History} from "../_models/history";
-import {HistoryService} from "../_services/history.service";
-import {AlertService} from "../_services/alert.service";
+import {History} from "../models/history";
+import {HistoryService} from "../service/history.service";
+import {AlertService} from "../service/alert.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {CustomerService} from "../_services/customer.service";
-import {Customer} from "../_models/customer";
-import {AlertService} from "../_services/alert.service";
+import {CustomerService} from "../service/customer.service";
+import {Customer} from "../models/customer";
+import {AlertService} from "../service/alert.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -36,14 +36,14 @@ export class CustomerComponent implements OnInit {
     this.loading =true;
     this.customerService.getCustomerData(customerId)
       .subscribe(data => {
-          this.customer = data;
+          // this.customer = data;
           this.alertService.success('Order successfully retrieved', true);
-          this.loading =false;
+          this.loading = false;
         }
         , error => {
           this.alertService.error(error);
-          this.loading=false;
-        })
+          this.loading = false;
+        });
   }
 
   backFromCustomerView() {

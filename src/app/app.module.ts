@@ -1,31 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { AuthenticationService } from './_services/authentication.service';
-import { AlertService } from './_services/alert.service';
-import { AuthGuard } from './_guards/index';
+import { AuthenticationService } from './service/authentication.service';
+import { AlertService } from './service/alert.service';
+import { AuthGuard } from './guards/index';
 import { AppRoutingModule } from './app.routing';
 import { FormsModule } from '@angular/forms';
-import { OrderService } from './_services/order.service';
+import { OrderService } from './service/order.service';
 import { OrderComponent } from './order/order.component';
 import { ProductComponent } from './product/product.component';
 import { HeaderComponent } from './header/header.component';
-import { ProductService } from './_services/product.service';
+import { ProductService } from './service/product.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HistoryComponent } from './history/history.component';
-import {HistoryService} from "./_services/history.service";
+import { HistoryService } from './service/history.service';
 import { UserComponent } from './user/user.component';
-import {UserService} from "./_services/user.service";
+import { UserService } from './service/user.service';
 import { CustomerComponent } from './customer/customer.component';
-import {CustomerService} from "./_services/customer.service";
-// import {MatTableModule} from '@angular/material';
-
+import { CustomerService } from './service/customer.service';
+import { HttpModule } from '@angular/http';
+import { TokenInterceptor } from './interceptor/tokenInterceptor';
+import { HttpClientService } from './service/http-client';
+import { AuthService } from './service/auth.service';
 
 @NgModule({
   declarations: [
@@ -47,10 +47,14 @@ import {CustomerService} from "./_services/customer.service";
     AppRoutingModule,
     NgIdleKeepaliveModule.forRoot(),
     HttpClientModule
-    // MatTableModule
   ],
-  providers: [AlertService, AuthGuard, AuthenticationService, OrderService, ProductService, HistoryService,
-  UserService, CustomerService],
+  providers: [AlertService, AuthGuard, AuthenticationService, AuthService, OrderService, ProductService, HistoryService,
+    UserService, CustomerService, HttpClientService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
