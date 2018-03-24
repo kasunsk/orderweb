@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         response => {
           // store logged in user after a successful login
           localStorage.setItem('currentUser', JSON.stringify((response as any).body.user));
-          localStorage.setItem('access_token', (response as any).body.token);
+          localStorage.setItem('access-token', (response as any).body.token);
 
           this.authenticationService.showNavigationSubject.next(true);
 

@@ -34,7 +34,7 @@ export class AuthenticationService {
 
     return this.httpClientService.get(environment.api_url + '/auth/logout', null)
       .map((response: Response) => {
-        localStorage.removeItem('access_token');
+        localStorage.removeItem('access-token');
       });
   }
 }

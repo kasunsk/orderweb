@@ -9,8 +9,8 @@ export class AuthService {
   }
 
   getToken() {
-    if (localStorage.getItem('access_token')) {
-      return localStorage.getItem('access_token');
+    if (localStorage.getItem('access-token')) {
+      return localStorage.getItem('access-token');
     }
 
     this.router.navigate(['/login']);
