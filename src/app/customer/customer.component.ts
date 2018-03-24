@@ -36,7 +36,7 @@ export class CustomerComponent implements OnInit {
     this.loading =true;
     this.customerService.getCustomerData(customerId)
       .subscribe(data => {
-          // this.customer = data;
+          this.customer = data as any;
           this.alertService.success('Order successfully retrieved', true);
           this.loading = false;
         }
