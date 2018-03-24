@@ -25,6 +25,7 @@ export class AppComponent {
     // Log out of the system after the time out
     idle.onTimeoutWarning.subscribe((countdown) => {
       if (countdown === 1) {
+        authenticationService.logout();
         this.logout();
       }
     });
