@@ -11,7 +11,10 @@ export class ProductService {
   }
 
   getAll(): Observable<Response> {
-    return this.httpClientService.get(environment.api_url + '/product/list', null)
-      .map((response: Response) => response);
+    const url = `${environment.api_url}/product/list`;
+
+    return this.httpClientService.get(url, null)
+      .map((response: Response) => response.body)
+      .catch((error: any) => Observable.throw(error.json()));
   }
 }
