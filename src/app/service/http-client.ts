@@ -3,6 +3,8 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/retryWhen';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import { TimeoutError } from 'rxjs/util/TimeoutError';
 
 @Injectable()

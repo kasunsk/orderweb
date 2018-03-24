@@ -10,7 +10,7 @@ export class AuthService {
 
   getToken() {
     if (localStorage.getItem('access_token')) {
-      return Observable.of(localStorage.getItem('access_token'));
+      return localStorage.getItem('access_token');
     }
 
     this.router.navigate(['/login']);

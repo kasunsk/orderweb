@@ -32,7 +32,7 @@ export class ProductComponent implements OnInit {
       data => {
         this.alertService.success('Order successfully retrieved', true);
         console.log(data);
-        this.products = data;
+        this.products = data as any;
         this.loading = false;
       },
       error => {

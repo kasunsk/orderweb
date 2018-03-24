@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AlertService} from "../service/alert.service";
-import {User} from "../models/user";
-import {UserService} from "../service/user.service";
+import { AlertService } from '../service/alert.service';
+import { User } from '../models/user';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-user',
@@ -10,12 +10,14 @@ import {UserService} from "../service/user.service";
 })
 export class UserComponent implements OnInit {
 
-  users : User[] = [];
-  loading : boolean;
+  users: User[];
+  loading: boolean;
 
-  constructor(private alertService:AlertService, private userService: UserService) { }
+  constructor(private alertService: AlertService, private userService: UserService) {
+  }
 
   ngOnInit() {
+    this.users = [];
     this.getUsers();
   }
 
@@ -26,7 +28,7 @@ export class UserComponent implements OnInit {
         data => {
           this.alertService.success('Order successfully retrieved', true);
           console.log(data);
-          this.users = data;
+          this.users = data.body as any;
           this.loading = false;
         },
         error => {

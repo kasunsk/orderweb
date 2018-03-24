@@ -1,25 +1,17 @@
-import {Injectable} from '@angular/core';
-import {Headers, Http, RequestOptions, Response} from '@angular/http';
-import 'rxjs/add/operator/map'
-import {environment} from '../../environments/environment';
-import {History} from "../models/history";
+import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs/Observable';
+import { HttpClientService } from './http-client';
 
 @Injectable()
 export class HistoryService {
 
-  constructor(private http: Http) {
+  constructor(private httpClientService: HttpClientService) {
   }
 
-  getOrderHistory(orderId) {
-    let headers = new Headers({"Content-Type": "application/json"});
-    headers.set("token", localStorage.getItem("userToken"));
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.get(environment.api_url + '/order/history/' + orderId, options)
-      .map((response: Response) => {
-        var res = response.json();
-        var result = <History[]>response.json();
-        return result;
-      });
+  getOrderHistory(orderId): Observable<Response> {
+    return this.httpClientService.get(environment.api_url + '/order/history/' + orderId, null)
+      .map((response: Response) => response);
   }
 }

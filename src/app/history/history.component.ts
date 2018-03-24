@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {History} from "../models/history";
-import {HistoryService} from "../service/history.service";
-import {AlertService} from "../service/alert.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { History } from '../models/history';
+import { HistoryService } from '../service/history.service';
+import { AlertService } from '../service/alert.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-history',
@@ -13,9 +13,9 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
   loading: boolean;
   histories: History[] = [];
-  orderId : number;
+  orderId: number;
   private sub: any;
-  backUrl : string;
+  backUrl: string;
 
 
   constructor(private historyService: HistoryService, private alertService: AlertService,
@@ -36,15 +36,15 @@ export class HistoryComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.historyService.getOrderHistory(orderId)
       .subscribe(data => {
-          this.histories = data;
+          this.histories = data.body as any;
           this.alertService.success('Order successfully retrieved', true);
-          this.loading =false;
+          this.loading = false;
         }
         , error => {
           this.histories = [];
           this.alertService.error(error);
-          this.loading=false;
-        })
+          this.loading = false;
+        });
   }
 
   backFromHistory() {

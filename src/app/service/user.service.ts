@@ -1,25 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
-import {User} from '../models/user';
+import { HttpClientService } from './http-client';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
 
-  constructor(private http: Http) {
+  constructor(private httpClientService: HttpClientService) {
   }
 
-  getAll() {
-    let headers = new Headers({'Content-Type': 'application/json'});
-    headers.set('token', localStorage.getItem('userToken'));
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.get(environment.api_url + '/user', options)
-      .map((response: Response) => {
-        // var res = response.json();
-        const result = <User[]>response.json();
-        return result;
-      });
+  getAll(): Observable<Response> {
+    return this.httpClientService.get(environment.api_url + '/user', null)
+      .map((response: Response) => response);
   }
 }

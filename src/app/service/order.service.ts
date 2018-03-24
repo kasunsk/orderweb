@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
 import { HttpClientService } from './http-client';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class OrderService {
@@ -9,18 +10,11 @@ export class OrderService {
   constructor(private httpClientService: HttpClientService) {
   }
 
-  getAll() {
+  getAll(): Observable<Response> {
+    const url = `${environment.api_url}/order`;
 
-    return this.httpClientService.get(environment.api_url + '/order', null)
-      .map((response: Response) => {
-        return response;
-      });
-
-    // return this.http.get(environment.api_url + '/order', options)
-    //   .map((response: Response) => {
-    //     var res = response.json();
-    //     var result = <Order[]>response.json();
-    //     return result;
-    //   });
+    return this.httpClientService.get(url, null)
+      .map((response: Response) => response.body)
+      .catch((error: any) => Observable.throw(error.json()));
   }
 }

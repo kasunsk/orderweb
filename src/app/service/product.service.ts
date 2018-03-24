@@ -1,25 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
-import { Product } from '../models/product';
+import { HttpClientService } from './http-client';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ProductService {
 
-  constructor(private http: Http) {
+  constructor(private httpClientService: HttpClientService) {
   }
 
-  getAll() {
-    let headers = new Headers({'Content-Type': 'application/json'});
-    headers.set('token', localStorage.getItem('userToken'));
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.get(environment.api_url + '/product/list', options)
-      .map((response: Response) => {
-        // var res = response.json();
-        const result = <Product[]>response.json();
-        return result;
-      });
+  getAll(): Observable<Response> {
+    return this.httpClientService.get(environment.api_url + '/product/list', null)
+      .map((response: Response) => response);
   }
 }

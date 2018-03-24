@@ -10,7 +10,6 @@ export class AuthenticationService {
 
   redirectUrl: string;
   showNavigation: boolean;
-  isLoggedIn: boolean;
   showNavigationSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.showNavigation);
 
   constructor(private httpClientService: HttpClientService) {
@@ -30,20 +29,12 @@ export class AuthenticationService {
   }
 
   logout() {
-
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
 
     return this.httpClientService.get(environment.api_url + '/auth/logout', null)
       .map((response: Response) => {
-        localStorage.removeItem('access-token');
+        localStorage.removeItem('access_token');
       });
   }
-
-  // private jwt() {
-  //   // create authorization header with jwt token
-  //   let userToken = JSON.parse(localStorage.getItem('userToken'));
-  //   let headers = new Headers({'user_token': userToken, 'Content-Type': 'application/json'});
-  //   return new RequestOptions({headers: headers});
-  // }
 }

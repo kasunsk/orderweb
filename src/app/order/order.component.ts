@@ -41,7 +41,7 @@ export class OrderComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          this.orders = (data as any).body;
+          this.orders = data as any;
           this.loading = false;
           this.alertService.success('Order successfully retrieved', true);
         },

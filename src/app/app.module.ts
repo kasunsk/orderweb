@@ -22,7 +22,6 @@ import { UserComponent } from './user/user.component';
 import { UserService } from './service/user.service';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerService } from './service/customer.service';
-import { HttpModule } from '@angular/http';
 import { TokenInterceptor } from './interceptor/tokenInterceptor';
 import { HttpClientService } from './service/http-client';
 import { AuthService } from './service/auth.service';
@@ -43,7 +42,6 @@ import { AuthService } from './service/auth.service';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpModule,
     AppRoutingModule,
     NgIdleKeepaliveModule.forRoot(),
     HttpClientModule
