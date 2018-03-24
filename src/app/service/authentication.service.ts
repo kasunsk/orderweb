@@ -29,12 +29,9 @@ export class AuthenticationService {
   }
 
   logout() {
-    // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
-
     return this.httpClientService.get(environment.api_url + '/auth/logout', null)
       .map((response: Response) => {
-        localStorage.removeItem('access-token');
       });
   }
 }
