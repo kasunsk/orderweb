@@ -1,35 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthenticationService } from '../service/authentication.service';
-
+import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   title = 'product.lk';
-  showNavigation: boolean;
-  addSubscription: any = {};
 
-  constructor(private router: Router, private authenticationService: AuthenticationService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.addSubscription.showNavigationSubject = this.authenticationService.showNavigationSubject.subscribe(showNavigation => {
-      this.showNavigation = showNavigation;
-    });
-  }
-
-  logout() {
-    this.authenticationService.logout();
-    localStorage.clear();
-    this.router.navigate(['/login']);
-    this.authenticationService.showNavigationSubject.next(false);
-  }
-
-  ngOnDestroy(): void {
-    this.addSubscription.unsubscribe();
   }
 
 }

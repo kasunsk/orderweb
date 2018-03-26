@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import {environment} from '../../environments/environment';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable} from 'rxjs/Observable';
-import {HttpClientService} from './http-client';
+import { environment } from '../../environments/environment';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { HttpClientService } from './http-client';
 
 @Injectable()
 export class AuthenticationService {

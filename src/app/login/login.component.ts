@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loading = false;
-    this.returnUrl = '/order';
+    this.returnUrl = '/';
   }
 
   login() {

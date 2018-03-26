@@ -25,6 +25,7 @@ import { CustomerService } from './service/customer.service';
 import { TokenInterceptor } from './interceptor/tokenInterceptor';
 import { HttpClientService } from './service/http-client';
 import { AuthService } from './service/auth.service';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AuthService } from './service/auth.service';
     HomeComponent,
     HistoryComponent,
     UserComponent,
-    CustomerComponent
+    CustomerComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
