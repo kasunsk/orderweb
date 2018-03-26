@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {CustomerService} from "../service/customer.service";
-import {Customer} from "../models/customer";
-import {AlertService} from "../service/alert.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '../service/customer.service';
+import { Customer } from '../models/customer';
+import { AlertService } from '../service/alert.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer',
@@ -11,14 +11,14 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class CustomerComponent implements OnInit {
 
-  loading : boolean;
-  customer : Customer;
-  customerId : number;
+  loading: boolean;
+  customer: Customer;
+  customerId: number;
   private sub: any;
-  backUrl : string;
+  backUrl: string;
 
   constructor(private alertService: AlertService, private customerService: CustomerService,
-              private route: ActivatedRoute, private router : Router) {
+              private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -29,11 +29,12 @@ export class CustomerComponent implements OnInit {
     });
     this.backUrl = '';
     this.loading = false;
+    this.customer = <Customer>{};
     this.loadCustomer(this.customerId);
   }
 
   loadCustomer(customerId) {
-    this.loading =true;
+    this.loading = true;
     this.customerService.getCustomerData(customerId)
       .subscribe(data => {
           this.customer = data as any;
