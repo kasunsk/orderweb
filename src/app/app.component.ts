@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core';
 import { Keepalive } from '@ng-idle/keepalive';
+import {AuthenticationService} from "./service/authentication.service";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { Keepalive } from '@ng-idle/keepalive';
 })
 export class AppComponent {
 
-  constructor(private idle: Idle, private keepalive: Keepalive, private router: Router) {
+  constructor(private idle: Idle, private keepalive: Keepalive, private router: Router,
+              authenticationService: AuthenticationService) {
     // sets an idle timeout of 5 seconds.
     idle.setIdle(5);
 
@@ -23,6 +25,7 @@ export class AppComponent {
     // Log out of the system after the time out
     idle.onTimeoutWarning.subscribe((countdown) => {
       if (countdown === 1) {
+        authenticationService.logout();
         this.logout();
       }
     });

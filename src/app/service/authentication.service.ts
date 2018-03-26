@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-import { environment } from '../../environments/environment';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { HttpClientService } from './http-client';
+import {environment} from '../../environments/environment';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Observable} from 'rxjs/Observable';
+import {HttpClientService} from './http-client';
 
 @Injectable()
 export class AuthenticationService {
@@ -29,12 +29,8 @@ export class AuthenticationService {
   }
 
   logout() {
-    // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
-
     return this.httpClientService.get(environment.api_url + '/auth/logout', null)
-      .map((response: Response) => {
-        localStorage.removeItem('access-token');
-      });
+      .map((response: Response) => response.body).catch((error: any) => Observable.throw(error.json()));
   }
 }
