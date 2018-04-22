@@ -1,0 +1,76 @@
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-sm-8 col-8">
+      <div class="card">
+        <div class="card-header">New Product</div>
+        <div class="card-body">
+          <form name="form" (ngSubmit)="addProduct()">
+            <fieldset>
+              <legend></legend>
+
+              <div class="form-group">
+                <label for="reference">Reference</label>
+                <input type="text" id="reference" name="reference" placeholder="abcd" [(ngModel)]="product.itemReference">
+              </div>
+
+              <div class="form-group">
+                <label for="item">Item</label>
+                <input type="text" id="item" name="item" placeholder="Name"
+                       [(ngModel)]="product.sellingItem">
+              </div>
+
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description" placeholder="description"
+                       [(ngModel)]="product.description">
+              </div>
+
+              <div class="form-group">
+                <label for="price">Currency</label>
+                <input type="text" id="currency" name="currency" placeholder="Rs" [(ngModel)]="product.currency">
+              </div>
+
+              <div class="form-group">
+                <label for="price">price</label>
+                <input type="text" id="price" name="price" placeholder="1000"
+                       [(ngModel)]="product.price">
+              </div>
+
+              <div class="form-group">
+                <label for="availableAmount">Amount</label>
+                <input type="text" id="availableAmount" name="availableAmount" placeholder="1" [(ngModel)]="product.availableAmount">
+              </div>
+
+              <div class="form-group">
+                <label for="status">Status</label>
+                <input type="text" id="status" name="status" placeholder="AVAILABLE"
+                       [(ngModel)]="product.status">
+              </div>
+
+              <div class="form-group">
+                <label for="validUntil">Valid To</label>
+                <input type="date" id="validUntil" name="validUntil" max="3000-12-31"
+                       min="1000-01-01" class="form-control" [(ngModel)]="product.validUntil">
+              </div>
+
+              <div class="form-group">
+                <label for="image">Image</label>
+                <input type="text" id="image" name="image" placeholder="Image url"
+                       [(ngModel)]="product.image">
+              </div>
+
+              <!--- Buttons Block --->
+              <div class="form-group">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Add</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -26,6 +26,7 @@ import { TokenInterceptor } from './interceptor/tokenInterceptor';
 import { HttpClientService } from './service/http-client';
 import { AuthService } from './service/auth.service';
 import { NavigationComponent } from './navigation/navigation.component';
+import { ProductAddComponent } from './product-add/product-add.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     HistoryComponent,
     UserComponent,
     CustomerComponent,
-    NavigationComponent
+    NavigationComponent,
+    ProductAddComponent
   ],
   imports: [
     BrowserModule,

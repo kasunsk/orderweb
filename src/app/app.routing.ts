@@ -9,6 +9,7 @@ import { UserComponent } from './user/user.component';
 import { CustomerComponent } from './customer/customer.component';
 import { HistoryComponent } from './history/history.component';
 import { AuthGuard } from './guards/auth.guard';
+import {ProductAddComponent} from "./product-add/product-add.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
   {path: 'order/customer/:customerId', component: CustomerComponent, canActivate: [AuthGuard]},
   {path: 'product', component: ProductComponent, canActivate: [AuthGuard]},
   {path: 'user', component: UserComponent, canActivate: [AuthGuard]},
+  {path:'product/new', component: ProductAddComponent, canActivate: [AuthGuard]},
 
   // otherwise redirect to home
   {path: '**', redirectTo: ''}

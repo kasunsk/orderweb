@@ -40,9 +40,9 @@ export class AppComponent {
   }
 
   logout() {
-    localStorage.clear();
     this.authenticationService.logout();
     this.router.navigate(['/login']);
+    localStorage.clear();
   }
 
 }
