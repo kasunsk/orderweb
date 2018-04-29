@@ -27,6 +27,7 @@ import { HttpClientService } from './service/http-client';
 import { AuthService } from './service/auth.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ProductAddComponent } from './product-add/product-add.component';
+import { UserCreateComponent } from './user-create/user-create.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ProductAddComponent } from './product-add/product-add.component';
     UserComponent,
     CustomerComponent,
     NavigationComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,

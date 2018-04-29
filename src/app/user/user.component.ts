@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertService } from '../service/alert.service';
 import { User } from '../models/user';
 import { UserService } from '../service/user.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user',
@@ -12,13 +13,15 @@ export class UserComponent implements OnInit {
 
   users: User[];
   loading: boolean;
+  userUrl : string;
 
-  constructor(private alertService: AlertService, private userService: UserService) {
+  constructor(private alertService: AlertService, private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
     this.users = [];
     this.getUsers();
+    this.userUrl = 'user/add';
   }
 
   getUsers() {
@@ -35,6 +38,10 @@ export class UserComponent implements OnInit {
           this.alertService.error(error);
           this.loading = false;
         });
+  }
+
+  addNewUser() {
+    this.router.navigate([this.userUrl]);
   }
 
 }
