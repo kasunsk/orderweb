@@ -28,6 +28,7 @@ import { AuthService } from './service/auth.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { UserCreateComponent } from './user-create/user-create.component';
+import { OrderUpdateComponent } from './order-update/order-update.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { UserCreateComponent } from './user-create/user-create.component';
     CustomerComponent,
     NavigationComponent,
     ProductAddComponent,
-    UserCreateComponent
+    UserCreateComponent,
+    OrderUpdateComponent
   ],
   imports: [
     BrowserModule,

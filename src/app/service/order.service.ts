@@ -17,4 +17,34 @@ export class OrderService {
       .map((response: Response) => response.body)
       .catch((error: any) => Observable.throw(error.json()));
   }
+
+  updateOrder(order) {
+    return this.httpClientService.put(environment.api_url + '/order', order)
+      .map((response: Response) => response.body)
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
+  getOrder(orderId) {
+    return this.httpClientService.get(environment.api_url + '/order/get/' + orderId, null)
+      .map((response: Response) => response.body)
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
+  availableOrderStatus() {
+    return this.httpClientService.get(environment.api_url + '/order/get/status', null)
+      .map((response: Response) => response.body)
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
+  availablePaymentStatus() {
+    return this.httpClientService.get(environment.api_url + '/order/get/payment/status', null)
+      .map((response: Response) => response.body)
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
+  availablePaymentTypes() {
+    return this.httpClientService.get(environment.api_url + '/order/get/payment/type', null)
+      .map((response: Response) => response.body)
+      .catch((error: any) => Observable.throw(error.json()));
+  }
 }

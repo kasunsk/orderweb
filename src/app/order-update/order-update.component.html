@@ -1,0 +1,50 @@
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-sm-8 col-8">
+      <div class="card">
+        <div class="card-header">Update Order</div>
+        <div class="card-body">
+          <form name="form" (ngSubmit)="updateOrder()">
+            <fieldset>
+              <legend></legend>
+
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" name="status" [(ngModel)]="order.orderStatus">
+                  <option *ngFor="let x of this.availableStatus" [value]="x" [selected]="order.orderStatus == x">{{x}}</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" id="price" name="price" placeholder=""
+                       [(ngModel)]="order.price" value="order.price">
+              </div>
+
+              <div class="form-group">
+                <label for="paymentType">Payment Type</label>
+                <select id="paymentType" name="paymentType" [(ngModel)]="order.paymentType">
+                  <option *ngFor="let x of this.availablePaymentTypes" [value]="x" [selected]="order.paymentType == x">{{x}}</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="paymentStatus">Payment Status</label>
+                <select id="paymentStatus" name="paymentStatus" [(ngModel)]="order.paymentStatus">
+                  <option *ngFor="let x of this.availablePaymentStatus" [value]="x" [selected]="order.paymentStatus == x">{{x}}</option>
+                </select>
+              </div>
+
+              <!--- Buttons Block --->
+              <div class="form-group">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

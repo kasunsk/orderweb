@@ -17,6 +17,7 @@ export class OrderComponent implements OnInit {
   orders: Order[];
   historyUrl: string;
   customerUrl: string;
+  orderUpdateUrl:string;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -31,6 +32,7 @@ export class OrderComponent implements OnInit {
     this.getOrders();
     this.historyUrl = 'order/history/';
     this.customerUrl = 'order/customer/';
+    this.orderUpdateUrl = 'order/update/';
 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
@@ -57,6 +59,10 @@ export class OrderComponent implements OnInit {
 
   getCustomer(customerId) {
     this.router.navigate([this.customerUrl + customerId]);
+  }
+
+  updateOrder(orderId) {
+    this.router.navigate([this.orderUpdateUrl + orderId]);
   }
 
 }

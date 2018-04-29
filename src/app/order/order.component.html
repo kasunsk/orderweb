@@ -24,7 +24,7 @@
       <td>{{order.paymentStatus}}</td>
       <td>{{order.createdDate}}</td>
       <td><button id="history" type="button" (click)="this.getOrderHistory(order.orderId)" class="btn btn-primary">History</button>
-      <td><button type="button" class="btn btn-primary">Edit</button>
+      <td><button type="button" (click)="this.updateOrder(order.orderId)" class="btn btn-primary">Edit</button>
       <td><button type="button" (click)="this.getCustomer(order.customerId)" class="btn btn-primary">Customer</button>
     </tr>
     </tbody>
