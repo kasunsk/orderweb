@@ -15,6 +15,7 @@ export class ProductComponent implements OnInit {
   products: Product[];
   failUrl: string;
   orderAddUrl: string;
+  orderEditUrl:string;
 
   constructor(private route: ActivatedRoute,
               private router: Router, private alertService: AlertService,
@@ -26,6 +27,7 @@ export class ProductComponent implements OnInit {
     this.products = [];
     this.failUrl = '/';
     this.orderAddUrl = 'product/new';
+    this.orderEditUrl = 'product/edit/';
     this.loadProducts();
   }
 
@@ -46,6 +48,10 @@ export class ProductComponent implements OnInit {
 
   addNewProduct() {
     this.router.navigate([this.orderAddUrl]);
+  }
+
+  editProduct(productId) {
+    this.router.navigate([this.orderEditUrl + productId]);
   }
 
 

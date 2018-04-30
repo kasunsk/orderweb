@@ -23,6 +23,7 @@ const appRoutes: Routes = [
   {path: 'product', component: ProductComponent, canActivate: [AuthGuard]},
   {path: 'user', component: UserComponent, canActivate: [AuthGuard]},
   {path:'product/new', component: ProductAddComponent, canActivate: [AuthGuard]},
+  {path: 'product/edit/:productId', component: ProductAddComponent, canActivate: [AuthGuard]},
   {path: 'user/add', component:UserCreateComponent, canActivate:[AuthGuard]},
 
   // otherwise redirect to home

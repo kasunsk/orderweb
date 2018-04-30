@@ -18,6 +18,15 @@ export class ProductService {
       .catch((error: any) => Observable.throw(error.json()));
   }
 
+  loadProductById(productId):Observable<Response> {
+    const url = `${environment.api_url}/product/` + productId;
+
+    return this.httpClientService.get(url, null)
+      .map((response: Response) => response.body)
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
+
   availableProductStatus() {
     return this.httpClientService.get(environment.api_url + '/product/available/status', null)
       .map((response: Response) => response.body)
