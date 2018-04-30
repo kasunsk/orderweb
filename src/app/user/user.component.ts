@@ -3,6 +3,8 @@ import { AlertService } from '../service/alert.service';
 import { User } from '../models/user';
 import { UserService } from '../service/user.service';
 import {Router} from "@angular/router";
+import {environment} from "../../environments/environment";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-user',
@@ -15,7 +17,8 @@ export class UserComponent implements OnInit {
   loading: boolean;
   userUrl : string;
 
-  constructor(private alertService: AlertService, private userService: UserService, private router: Router) {
+  constructor(private alertService: AlertService, private userService: UserService, private router: Router,
+              private httpClient: HttpClient) {
   }
 
   ngOnInit() {
@@ -42,6 +45,22 @@ export class UserComponent implements OnInit {
 
   addNewUser() {
     this.router.navigate([this.userUrl]);
+  }
+
+  removeUser(userId) {
+    this.loading = true;
+    return this.httpClient.delete(environment.api_url + '/user/' + userId)
+      .subscribe(
+        data => {
+          const result = <boolean>data;
+          this.loading = false;
+          this.getUsers();
+        },
+        err => {
+          console.log(err);
+          console.log('Error occurred');
+          this.loading = false;
+        });
   }
 
 }
