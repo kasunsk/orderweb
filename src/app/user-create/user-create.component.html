@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-lg-4 col-md-6 col-sm-8 col-8">
       <div class="card">
-        <div class="card-header">New Product</div>
+        <div class="card-header">New User</div>
         <div class="card-body">
           <form name="form" (ngSubmit)="addNewUser()">
             <fieldset>
@@ -39,13 +39,14 @@
 
               <div class="form-group">
                 <label for="userRole">Role</label>
-                <input type="text" id="userRole" name="userRole" placeholder="ADMIN"
-                       [(ngModel)]="user.userRole">
+                <select id="userRole" name="userRole" [(ngModel)]="user.userRole">
+                  <option *ngFor="let x of this.availableUserRoles" [value]="x" [selected]="">{{x}}</option>
+                </select>
               </div>
 
               <!--- Buttons Block --->
               <div class="form-group">
-                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="reset" (click)="this.cancel()" class="btn btn-default">Cancel</button>
                 <button type="submit" class="btn btn-primary">Add</button>
               </div>
             </fieldset>
