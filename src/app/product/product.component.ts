@@ -3,6 +3,8 @@ import { Product } from '../models/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../service/alert.service';
 import { ProductService } from '../service/product.service';
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-product',
@@ -19,7 +21,7 @@ export class ProductComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router, private alertService: AlertService,
-              private productService: ProductService) {
+              private productService: ProductService, private httpClient: HttpClient) {
   }
 
   ngOnInit() {
@@ -52,6 +54,23 @@ export class ProductComponent implements OnInit {
 
   editProduct(productId) {
     this.router.navigate([this.orderEditUrl + productId]);
+  }
+
+  removeProduct(productId) {
+
+    this.loading = true;
+    return this.httpClient.delete(environment.api_url + '/product/' + productId)
+      .subscribe(
+        data => {
+          this.loading = false;
+          this.loadProducts();
+        },
+        err => {
+          console.log(err);
+          console.log('Error occurred');
+          this.loading = false;
+        });
+
   }
 
 
