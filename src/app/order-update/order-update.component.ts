@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {OrderService} from "../service/order.service";
 import {Order} from "../models/order";
 import {AlertService} from "../service/alert.service";
@@ -20,8 +20,9 @@ export class OrderUpdateComponent implements OnInit {
   availableStatus: string [];
   availablePaymentTypes: string[];
   availablePaymentStatus: string[];
+  backUrl:string;
 
-  constructor(private route: ActivatedRoute, private orderService: OrderService,private alertService: AlertService, private httpClient: HttpClient) { }
+  constructor(private route: ActivatedRoute, private orderService: OrderService,private alertService: AlertService, private httpClient: HttpClient,  private router: Router) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -29,6 +30,7 @@ export class OrderUpdateComponent implements OnInit {
 
       // In a real app: dispatch action to load the details here.
     });
+    this.backUrl = '/order';
     this.loadOrder(this.orderId);
     this.loadAvailableOrderStatus();
     this.loadAvailablePaymentTypes();
@@ -113,7 +115,7 @@ export class OrderUpdateComponent implements OnInit {
             const result = <Order>data;
             this.order = result;
             this.loading = false;
-            // this.router.navigate([this.orderPlacementSuccessUrl + this.orderReference]);
+            this.router.navigate([this.backUrl]);
           },
           err => {
             console.log(err);
@@ -121,5 +123,9 @@ export class OrderUpdateComponent implements OnInit {
             this.loading = false;
           });
   }F
+
+  cancel() {
+    this.router.navigate([this.backUrl]);
+  }
 
 }

@@ -3,23 +3,33 @@
     <div class="col-md-9">
 
       <div class="form-group">
-        <label for="name">Customer Name</label> : <label id="name">{{customer.customerName}}</label>
+        <label for="customerName">Customer Name</label>
+        <input type="text" [readonly]="true" id="customerName"  name="customerName" placeholder=""
+               [(ngModel)]="customer.customerName" value="customer.customerName">
       </div>
 
       <div class="form-group">
-        <label for="mobileNumber">Customer Mobile Number</label> : <label id="mobileNumber">{{customer.mobileNumber}}</label>
+        <label for="mobileNumber">Customer Mobile Number</label>
+        <input type="text" [readonly]="true" id="mobileNumber"  name="mobileNumber" placeholder=""
+               [(ngModel)]="customer.mobileNumber" value="customer.mobileNumber">
       </div>
 
       <div class="form-group">
-        <label for="email">Customer Email</label> : <label id="email">{{customer.email}}</label>
+        <label for="email">Customer Email</label>
+        <input type="text" [readonly]="true" id="email"  name="email" placeholder=""
+                [(ngModel)]="customer.email" value="customer.email">
       </div>
 
       <div class="form-group">
-        <label for="customerAddress">Customer Address</label> : <label id="customerAddress">{{customer.customerAddress}}</label>
+        <label for="customerAddress">Customer Address</label>
+        <input type="text" [readonly]="true" id="customerAddress"  name="customerAddress" placeholder=""
+           [(ngModel)]="customer.customerAddress" value="customer.customerAddress">
       </div>
 
       <div class="form-group">
-        <label for="createdDate">Created Date</label> : <label id="createdDate">{{customer.createdDate}}</label>
+        <label for="createdDate">Created Date</label>
+        <input type="text" [readonly]="true" id="createdDate"  name="createdDate" placeholder=""
+               [(ngModel)]="customer.createdDate" value="customer.createdDate">
       </div>
       <button (click)="backFromCustomerView()" class="btn">Back</button>
     </div>
