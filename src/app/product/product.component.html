@@ -23,9 +23,9 @@
       <td>{{product.description}}</td>
       <td>{{product.validUntil}}</td>
       <td>{{product.createdDate}}</td>
-      <td><button type="button" (click)="this.editProduct(product.id)" class="btn btn-primary">Edit</button>
+      <td><button type="button" (click)="editProduct(product.id)" class="btn btn-primary">Edit</button>
       </td>
-      <td><button type="button" (click)="this.removeProduct(product.id)" class="btn btn-primary">Remove</button>
+      <td><button type="button" (click)="removeProduct(product.id)" class="btn btn-primary">Remove</button>
       </td>
     </tr>
     </tbody>
